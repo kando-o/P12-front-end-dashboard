@@ -1,0 +1,11 @@
+.logo {
+  display: flex;
+  flex-direction: column;
+  border: solid blueviolet 1px;
+  height: 91px;
+}
+.logo_item {
+  height: 50px;
+  width: 50px;
+  background: whitesmoke;
+}/*# sourceMappingURL=navOverlay.css.map */

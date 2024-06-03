@@ -1,6 +1,6 @@
 function Footer () {
     return <>
-    <h1>Footer</h1>
+        <h2>Copyright 2024</h2>
     </>
 }
 

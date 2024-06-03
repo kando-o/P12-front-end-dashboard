@@ -1,21 +1,34 @@
 import Footer from "../../components/footer/views/footer"
 
-const Layout = () => {
+import Navigation from "../../components/navigation/views/navigation"
+import NavOverlay from "../../components/navigation/navOverlay/views/navOverlay"
+import PropTypes from "prop-types"
+import "../assets/styles/layout.css"
+
+const Layout = ({children}) => {
     return (
-        <>
-        <div className="navigation">
-        
-        </div>
-        <div className="main">
+        <div className="layout">
+            <nav className="layout_navigation">
+                <>
+                <Navigation />
+                <NavOverlay />
+                </>
+            </nav>
+            <main className="layout_main">
+                {children}
+            </main>
 
+            <footer className="layout_footer">
+                <div className="copyright">
+                    <Footer />
+                </div>
+            </footer>
         </div>
-        <div className="footer">
-            <Footer/>
-        </div>
-        </>
     )
+}
 
-
+Layout.propTypes = {
+    children: PropTypes.object.isRequired
 }
 
 export default Layout

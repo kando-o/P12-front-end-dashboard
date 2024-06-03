@@ -1,7 +1,10 @@
+import "../assets/styles/poids.css"
 function Poids () {
-    return <>
-        <h1>Poids</h1>
-    </>
+    return(
+        <div className="mainPoids">
+            <h1>Page Poids</h1>
+        </div>
+    )
 }
 
 export default Poids

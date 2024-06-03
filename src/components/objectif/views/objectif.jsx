@@ -1,7 +1,10 @@
+import "../assets/styles/objectif.css"
 function Objectif () {
     return <>
-        <h1>Objectif</h1>
-    </>
+    <div className="mainObjectif">
+            <h1>Score</h1>
+        </div>    
+        </>
 }
 
 export default Objectif

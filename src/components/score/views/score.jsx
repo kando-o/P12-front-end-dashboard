@@ -1,6 +1,10 @@
+import "../assets/styles/score.css"
+
 function Score () {
     return <>
-    <h1>Score</h1>
+    <div className="mainScore">
+            <h1>Score</h1>
+        </div>
     </>
 }
 

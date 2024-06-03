@@ -149,7 +149,7 @@ html {
 a {
   text-decoration: none;
   background-color: transparent;
-  color: var(--black);
+  color: #000;
 }
 
 button {

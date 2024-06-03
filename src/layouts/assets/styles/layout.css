@@ -1,0 +1,14 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 111px;
+  width: 100dvw;
+  background: gray;
+  color: whitesmoke;
+}
+.layout_navigation {
+  border: solid 1px blueviolet;
+}
+.layout_footer {
+  background: saddlebrown;
+}/*# sourceMappingURL=layout.css.map */
