@@ -1,6 +1,10 @@
+import "../assets/styles/radar.css"
+
 function Radar () {
     return <>
-        <h1>Poids</h1>
+        <div className="mainRadar">
+            <h1>Component Radar</h1>
+        </div>
     </>
 }
 

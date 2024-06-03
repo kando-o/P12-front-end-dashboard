@@ -1,0 +1,16 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 111px;
+    width: 100dvw;
+    background: gray;
+    color: whitesmoke;
+
+    &_navigation {
+        border: solid 1px blueviolet;
+    }
+
+    &_footer {
+        background: saddlebrown;
+    }
+}
