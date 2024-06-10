@@ -1,11 +1,26 @@
 .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    height: 91px;
+
+    .logoNav {
+        margin-left: 2rem;
+    }
+
     &_list{
         display: flex;
-        justify-content: end;
-        gap: 30px;
+        justify-content:space-between;
+        gap: 219px;
     }
+
     &_item {
-        font-size: 48px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+
+        a {
+            color: whitesmoke;
+        }
     }
-    border: solid red;
 }

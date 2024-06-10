@@ -1,5 +1,8 @@
 .mainObjectif {
+  grid-column-start: col-start 2;
   width: 258px;
   height: 263px;
-  box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 5px rgb(41, 39, 50);
+  background: rgb(251, 251, 251);
+  border-radius: 5px;
 }/*# sourceMappingURL=objectif.css.map */

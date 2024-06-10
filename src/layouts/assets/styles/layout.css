@@ -3,12 +3,21 @@
   flex-direction: column;
   height: 111px;
   width: 100dvw;
-  background: gray;
-  color: whitesmoke;
-}
-.layout_navigation {
-  border: solid 1px blueviolet;
 }
 .layout_footer {
-  background: saddlebrown;
+  display: flex;
+  position: absolute;
+  width: 117px;
+  height: 100%;
+  z-index: -1;
+  background: #000;
+  color: whitesmoke;
+}
+.layout_footer .copyright {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 59px;
+  writing-mode: vertical-rl; /* Makes text vertical  */
+  transform: rotate(180deg); /* Flip the text */
 }/*# sourceMappingURL=layout.css.map */

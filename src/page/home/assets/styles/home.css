@@ -1,3 +1,44 @@
 .home {
-  border: solid yellow 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 50px 0px 0px 217px;
+}
+.home .profil {
+  grid-row: 1;
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 6rem;
+}
+.home .profil h1 {
+  margin: 2rem 0px;
+}
+.home .profil span {
+  color: red;
+}
+.home .profil p {
+  font-size: 28px;
+  font-weight: 300;
+}
+.home_seeGlobal {
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 28px;
+}
+.home_widget {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 39px;
+  color: black;
+}
+
+.logo {
+  position: absolute;
+  top: 40%;
+  width: 117px;
+  background: #000;
+  height: auto;
 }/*# sourceMappingURL=home.css.map */

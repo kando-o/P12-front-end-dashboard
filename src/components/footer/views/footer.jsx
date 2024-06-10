@@ -1,6 +1,8 @@
+// LE CSS de FOOTER est dans le CSS du layout
+
 function Footer () {
     return <>
-        <h2>Copyright 2024</h2>
+        <h2>Copyright SportSee 2024</h2>
     </>
 }
 

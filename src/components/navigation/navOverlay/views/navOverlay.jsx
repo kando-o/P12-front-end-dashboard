@@ -8,22 +8,21 @@ function NavOverlay () {
         <>
             <ul className="logo">
                 <li className="logo_item">
-                <NavLink to="/"><Logo width={40} height={40} logoClass="logo_natation" type="zen" /></NavLink>
+                <NavLink to="/poids"><Logo width={40} height={40} logoClass="logo_natation" type="zen" /></NavLink>
                 </li>
 
                 <li className="logo_item">
-                <NavLink to="/"><Logo width={40} height={40} logoClass="logo_natation" type="natation" /></NavLink>
+                <NavLink to="/score"><Logo width={40} height={40} logoClass="logo_natation" type="natation" /></NavLink>
                 </li>
 
                 <li className="logo_item">
-                <NavLink to="/"><Logo width={40} height={40} logoClass="logo_natation" type="velo" /></NavLink>
+                <NavLink to="/radar"><Logo width={40} height={40} logoClass="logo_natation" type="velo" /></NavLink>
                 </li>
 
                 <li className="logo_item">
-                <NavLink to="/"><Logo width={40} height={40} logoClass="logo_natation" type="weigth" /></NavLink>
+                <NavLink to="/objectif"><Logo width={40} height={40} logoClass="logo_natation" type="weigth" /></NavLink>
                 </li>
             </ul>
-            
         </>
     )
 }

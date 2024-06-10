@@ -2,7 +2,7 @@ import "../assets/styles/objectif.css"
 function Objectif () {
     return <>
     <div className="mainObjectif">
-            <h1>Score</h1>
+            <h1>Objectif</h1>
         </div>    
         </>
 }

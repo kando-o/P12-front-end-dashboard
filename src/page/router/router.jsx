@@ -4,13 +4,14 @@ import PagePoids from "../../components/poids/views/poids.jsx"
 import PageScore from "../../components/score/views/score.jsx"
 import PageRadar from "../../components/radar/views/radar.jsx"
 import PageObjectif from "../../components/objectif/views/objectif.jsx"
+import Layout from "../../layouts/views/layout.jsx"
 
 const Router = () => {
     return (
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<PageHome />} /> 
-            <Route path="/poids" element={<PagePoids />} /> 
+            <Route path="/poids" element={<Layout> <PagePoids /> </Layout>} /> 
             <Route path="/score" element={<PageScore />} /> 
             <Route path="/radar" element={<PageRadar />} /> 
             <Route path="/objectif" element={<PageObjectif />} /> 

@@ -1,5 +1,8 @@
 .mainScore {
+  grid-column: 3/span 3;
   width: 258px;
   height: 263px;
-  box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 5px blue;
+  background: rgb(251, 251, 251);
+  border-radius: 5px;
 }/*# sourceMappingURL=score.css.map */

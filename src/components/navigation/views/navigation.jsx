@@ -23,7 +23,6 @@ function Navigation () {
                     </li>
                 </ul>
             </div>
-            <div className="navigation"></div>
         </nav>
     )
 }

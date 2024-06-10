@@ -8,12 +8,12 @@ import "../assets/styles/layout.css"
 const Layout = ({children}) => {
     return (
         <div className="layout">
-            <nav className="layout_navigation">
+            <div className="layout_navigation">
                 <>
                 <Navigation />
                 <NavOverlay />
                 </>
-            </nav>
+            </div>
             <main className="layout_main">
                 {children}
             </main>
