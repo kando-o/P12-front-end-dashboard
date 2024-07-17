@@ -1,8 +1,8 @@
-// LE CSS de FOOTER est dans le CSS du layout
+import "../assets/styles/footer.css"
 
 function Footer () {
     return <>
-        <h2>Copyright SportSee 2024</h2>
+        <div className="footer_text">Copyright SportSee 2024</div>
     </>
 }
 

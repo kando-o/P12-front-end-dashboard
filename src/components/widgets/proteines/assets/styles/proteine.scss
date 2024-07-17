@@ -1,7 +1,11 @@
-.proteine {
+.protein {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    gap: 24px;
     width: 258px;
     height: 124px ;
-    box-shadow: 0px 0px 5px pink;
+    box-shadow: 0px 0px 5px rgb(110, 166, 255);
     background: rgba(251, 251, 251, 1);
     border-radius: 10px;
 }

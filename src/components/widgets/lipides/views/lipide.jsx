@@ -4,25 +4,26 @@ import "../assets/styles/lipide.css"
 import Logo from "../../../logo/views/logo"
 
 function Lipide () {
-    const {userData, erroData} = useContext(DataContext)
     
-    if (erroData) {
-        return <div className="lipide_error"> Error: {erroData}</div>
-    }
-    
-    if (!userData) {
-        return <div className="lipide_loading"> Loading...</div>
-    }
+    const {loading, userData, errorData} = useContext(DataContext) 
 
-    const {keyData} = userData.data  
-
+    if (loading) {
+        return <div className="lipide_loading"> Loading... </div>
+    }
     return (
-
         <div className="lipide">
             <Logo type="fat" width={60} height={60} logoClass="lipide_svg"/>
-            <div>{userData && JSON.stringify(keyData.lipidCount)}g</div>
-            <h2>Lipide</h2>
-            <div>{userData && JSON.stringify(erroData)}</div>
+            <div className="lipide_info">
+                {userData && (
+                    <>
+                        <div>{JSON.stringify(userData.keyData.lipidCount)}g</div>
+                        <h2>Lipide</h2>
+                    </>
+                )}
+                {errorData && (
+                    <div>{userData && JSON.stringify(errorData)}</div>
+                )}
+            </div>
         </div>
         )
 }

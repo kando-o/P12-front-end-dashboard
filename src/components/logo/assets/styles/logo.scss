@@ -3,11 +3,9 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 20px;
 
     &_item {
         display: flex;
-        position: relative;
         align-items: center;
         justify-content: center;
         width: 69px;

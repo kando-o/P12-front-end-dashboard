@@ -1,10 +1,10 @@
-import Router from "./src/page/router/router"
+import Router from "./src/router/Router"
 import "./src/app/styles/app.css"
 import {DataProvider} from "../my-react-app/src/hook/context/context"
 
 function App() {
 	return (
-		<DataProvider>
+		<DataProvider  >
 			<Router />
 		</DataProvider>
 	)

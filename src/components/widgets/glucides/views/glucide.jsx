@@ -5,23 +5,25 @@ import Logo from "../../../logo/views/logo"
 
 function Glucide () {
 
-    const {userData, errorData} = useContext(DataContext) 
+    const {loading, userData, errorData} = useContext(DataContext) 
 
-    if (errorData) {
-        return <div className="glucide_error"> Error: {errorData}</div>
+    if (loading) {
+        return <div className="glucide_loading"> Loading... </div>
     }
-    
-    if (!userData) {
-        return <div className="glucide_loading"> Loading...</div>
-    }
-    const {keyData} = userData.data
-
     return <>
         <div className="glucide">
             <Logo type="glucide" width={60} height={60} logoClass="lipide_svg"/>
-            <div>{userData && JSON.stringify(keyData.carbohydrateCount)}g</div>
-            <h1>Glucide</h1>
-            <div>{errorData && JSON.stringify(errorData)}</div>
+            <div className="glucide_info">
+                {userData && (
+                    <>
+                        <div>{JSON.stringify(userData.keyData.carbohydrateCount)}g</div>
+                        <h2>Glucide</h2>
+                    </>
+                )}
+                {errorData && (
+                    <div className="glucide_error"> Error: {errorData}</div>
+                )}
+            </div>
         </div>
     </>
 }
