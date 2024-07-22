@@ -1,5 +1,4 @@
 import { Outlet, useParams } from "react-router-dom";
-import Layout from "../../../layouts/views/layout";
 import { useContext, useEffect } from "react";
 import { DataContext } from "../../../hook/context/context";
 
@@ -11,10 +10,8 @@ function PageProvider() {
     }, [id, setId])
 
     return (
-        <Layout>
-            {<Outlet />}
-        </Layout>
-    );
+        <Outlet id={id} />
+    )
 }
 
 export default PageProvider;

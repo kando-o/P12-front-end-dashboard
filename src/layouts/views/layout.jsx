@@ -1,10 +1,12 @@
 import Footer from "../../components/footer/views/footer"
 import Navigation from "../../components/navigation/views/navigation"
 import NavOverlay from "../../components/navigation/navOverlay/views/navOverlay"
+import { Outlet } from "react-router-dom"
+
 import PropTypes from "prop-types"
 import "../assets/styles/layout.css"
 
-const Layout = ({children}) => {
+const Layout = () => {
     
     return (
 
@@ -24,7 +26,7 @@ const Layout = ({children}) => {
                     </footer>
                 </div>
                 <main className="layout_main">
-                    {children}
+                    <Outlet/>
                 </main>
             </div>
         </div>
