@@ -1,11 +1,8 @@
 import { NavLink } from "react-router-dom"
 import "../assets/styles/navigation.css"
 import Logo from "../../icons/logo"
-import { useContext } from "react";
-import { DataContext } from "../../../hook/context/context";
 
 function Navigation () {
-    const {id} = useContext(DataContext)
     return (
         <nav className="navigation">
             <ul className="navigation_list">
@@ -13,13 +10,13 @@ function Navigation () {
                     <Logo logoClass="logoNav"/>
                 </li>
                 <li className="navigation_item">
-                    <NavLink to={`/user/${id}`}>Accueil</NavLink>
+                    <NavLink to={'/user/mocked'}>Accueil</NavLink>
                 </li>
                 <li className="navigation_item">
                     <NavLink to="/">Profil</NavLink>
                 </li>
                 <li className="navigation_item">
-                    <NavLink to="/">Réglage</NavLink>
+                    <NavLink to="/user/reglage">Réglage</NavLink>
                 </li>
                 <li className="navigation_item">
                     <NavLink to="/">Communauté</NavLink>
