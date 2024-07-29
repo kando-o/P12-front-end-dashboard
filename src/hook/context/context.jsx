@@ -11,7 +11,7 @@ const mocked = {
             lastName: 'User',
             age: 31,
         },
-        todayScore: 0.12,
+        todayScore: 0.42,
         keyData: {
             calorieCount: 1930,
             proteinCount: 155,

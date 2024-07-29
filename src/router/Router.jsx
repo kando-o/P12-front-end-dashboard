@@ -66,7 +66,6 @@ const Router = () => {
                 </Route>
             </Route>
 
-
             {/* unconnected routes */}
             <Route path="*" element={<NotFound />}/>
         </Routes>

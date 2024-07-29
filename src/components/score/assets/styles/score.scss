@@ -1,8 +1,39 @@
 .mainScore {
+    position: relative;
     grid-column: 3 / span 3;
     width: 258px;
     height: 263px ;
-    box-shadow: 0px 0px 5px blue;
+    box-shadow: 0px 0px 10px rgb(151, 151, 151);
     background: rgba(251, 251, 251, 1);
     border-radius: 5px; ;
+
+    &-titre {
+        position: absolute;
+        margin: 1rem;
+        font-size: 15px;
+    }
+
+    &-content {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -30%);
+        z-index: 10;
+        width: 95px;
+    }
+
+    &-textContent {
+        text-align: center;
+        color: gray;
+        font-size: 16px;
+        span {
+            margin: 1rem;
+            font-size: 26px;
+            font-weight: 700;
+            color: black;
+        }
+        p {
+            margin: .5rem;
+        }
+    }
 }
