@@ -1,22 +1,84 @@
 import { useContext } from "react";
 import {DataContext} from "../../../hook/context/context";
 import "../assets/styles/poids.css"
-// import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-
+import { BarChart, Bar, XAxis, CartesianGrid,Tooltip, YAxis, ResponsiveContainer } from 'recharts';
 
 function Poids () {
-    const {userData, errorData} = useContext(DataContext)
 
-    if (!userData) {
-        return <div className="mainPoids_error">Error: {errorData}</div>
+    const {userActivityData, loading, errorData} = useContext(DataContext)
+    const param = window.location.pathname
+
+    const data =  userActivityData ? userActivityData.sessions.map( (item, index) => ({
+        name : index + 1,
+        kg : item.kilogram,
+        kCal : item.calories
+    })) : []
+
+    const CustomTooltip = ({ payload, active }) => {
+        if (active) {
+          return (
+            <div className="mainPoids-tooltipContainer">
+              <div className='mainPoids-tooltipItem'>
+                {payload[0].value} kg
+              </div>
+              <div className='mainPoids-tooltipItem'>
+                {payload[1].value} Kcal
+              </div>
+            </div>
+          )
+        }
+    }
+
+    if (loading) {
+        return <div className="mainPoids-loading"> Loading... </div>
+    }
+
+    if (!userActivityData) {
+        return <div className="mainPoids-error">Error: {errorData}</div>
     }
 
     return(<>
-            <div className="mainPoids">
-                <h1>Page Poids</h1>
-                {userData && <div>{JSON.stringify(userData)}</div>}
-                { errorData && <div>{JSON.stringify(errorData)}</div>}
-            </div> 
+        <div className= {param === "/user/mocked/poids" || param === "/user/12/poids" || param === "/user/18/poids" ? 'active mainPoids' : "mainPoids"}>
+            <div className="mainPoids-text">
+                <h2>Activité quotidienne</h2>
+                <ul>
+                    <li className="mainPoids-poid">Poids (kg)</li>
+                    <li className="mainPoids-kCal"> Calories brûlées (kCla)</li>
+                </ul>
+            </div>
+
+            <ResponsiveContainer width="100%" height="100%">
+
+                <BarChart
+                    data={data}
+                    width={500}
+                    height={300}
+                    margin={{
+                        right: 20,
+                        left: 20,
+                        bottom: 100,
+                    }}
+                >
+
+                    <Tooltip
+                        content={<CustomTooltip/>}
+                    />
+
+                    <CartesianGrid strokeDasharray="3" verticalCoordinatesGenerator = "false" />
+
+                    <XAxis dataKey="name" tick={{fill: '#979797'}} axisLine = {false} tickMargin={11} tickLine={false} />
+
+                    <YAxis orientation="right" tick={{fill: '#979797'}} axisLine = {false} tickMargin={15} tickLine={false} />
+
+                    <Tooltip content={CustomTooltip} />
+
+                    <Bar dataKey="kg" fill="#282D30" barSize="10" radius={[50, 50 ,0 ,0]} />
+
+                    <Bar dataKey="kCal" fill="#E60000" barSize="10" radius={[50, 50 ,0 ,0]} />
+
+                </BarChart>
+            </ResponsiveContainer>
+        </div> 
     </>
     )
 }

@@ -23,12 +23,28 @@
         }
     }
 
+    .mainPoids {
+        grid-area: mainPoids;
+    }
+    .mainRadar {
+        grid-area: mainRadar;
+    }
+    .mainObjectif {
+        grid-area: mainObjectif;
+    }
+    .mainScore {
+        grid-area: mainScore;
+    }
+
     &_seeGlobal {
-        display: flex;
-        max-width: 835px ;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 835px ;
         justify-content: space-between;
         gap: 28px;
+        grid-template-areas: 
+        " mainPoids mainPoids mainPoids"
+        "mainRadar mainObjectif mainScore";
     }
 
     &_widget {
@@ -39,12 +55,23 @@
         color: black;
         font-size: 24px;
         font-weight: 600;
+        width: 258px;
 
         h2 {
             font-size: 16px;
             color: gray;
             font-weight: 400;
             padding-top: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .home {
+        gap: 25px;
+
+        &_seeGlobal {
+            max-width: 700px;
         }
     }
 }

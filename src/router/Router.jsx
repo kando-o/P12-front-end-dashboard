@@ -20,15 +20,6 @@ const Dispatcher = ()=> {
         if (location.pathname === "/") {
             navigate ("/user/reglage")
         }
-        if (id === "mocked") {
-            navigate ("/user/mocked")
-        }
-        if (id === "12") {
-            navigate ("/user/12")
-        }
-        if (id === "19") {
-            navigate ("/user/18")
-        }
     }, [id, navigate , location.pathname])
 
     return (
@@ -39,7 +30,6 @@ const Dispatcher = ()=> {
 }
 
 const NotFound = () => {
-    console.log("not found")
     const navigate = useNavigate()
     useEffect(() => {
         setTimeout(() => {

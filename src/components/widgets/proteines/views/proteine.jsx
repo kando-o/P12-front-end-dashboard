@@ -10,9 +10,12 @@ function Proteine () {
     if (loading) {
         return <div className="protein_loading"> Loading... </div>
     }
+
     return <>
         <div className="protein">
+
             <Logo type="protein" width={60} height={60} logoClass="protein_svg"/>
+
             <div className="protein_info">
                 {userData && (
                     <>

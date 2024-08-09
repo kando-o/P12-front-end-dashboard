@@ -12,10 +12,11 @@ import { DataContext } from "../../../hook/context/context"
 
 function Home () {
     const {errorData, loading, userData} = useContext(DataContext)
+
     if (errorData) {
-        console.log("errrrrrrrrrrror")
-        return <div>erreeeeeeur !{JSON.stringify(errorData)}</div>
+        return <div>{JSON.stringify(errorData)}</div>
     }
+
     return(
         <div className="home">
             <div className="profil">

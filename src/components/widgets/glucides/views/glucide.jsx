@@ -10,6 +10,7 @@ function Glucide () {
     if (loading) {
         return <div className="glucide_loading"> Loading... </div>
     }
+
     return <>
         <div className="glucide">
             <Logo type="glucide" width={60} height={60} logoClass="lipide_svg"/>

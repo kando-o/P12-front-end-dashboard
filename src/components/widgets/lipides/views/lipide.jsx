@@ -4,12 +4,13 @@ import "../assets/styles/lipide.css"
 import Logo from "../../../logo/views/logo"
 
 function Lipide () {
-    
+
     const {loading, userData, errorData} = useContext(DataContext) 
 
     if (loading) {
         return <div className="lipide_loading"> Loading... </div>
     }
+
     return (
         <div className="lipide">
             <Logo type="fat" width={60} height={60} logoClass="lipide_svg"/>
@@ -25,7 +26,7 @@ function Lipide () {
                 )}
             </div>
         </div>
-        )
+    )
 }
 
 export default Lipide

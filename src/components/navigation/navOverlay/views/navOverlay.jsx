@@ -4,9 +4,10 @@ import "../assets/styles/navOverlay.css"
 import { useContext } from "react"
 import { DataContext } from "../../../../hook/context/context"
 
-
 function NavOverlay () {
+
     const {id} = useContext(DataContext)
+
     return (
         <>
             <div className="navigationOverlay">

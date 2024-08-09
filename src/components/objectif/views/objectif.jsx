@@ -1,41 +1,54 @@
 import { useContext } from "react";
 import { DataContext } from "../../../hook/context/context";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
-
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import "../assets/styles/objectif.css"
 
 function Objectif () {
-    const {userPerformance , errorData} = useContext(DataContext)
 
-    const dataClean = userPerformance && [
-      {
-        subject: userPerformance.kind,
-        A: userPerformance.data.map(dataValue => dataValue.value),
-        fullMark: 250,
-      }
+    const {userPerformance, loading, errorData} = useContext(DataContext)
+    const param = window.location.pathname
+
+    const ACTIVITY_FRENCH = [
+        'Intensité',
+        'Vitesse',
+        'Force',
+        'Endurance',
+        'Energie',
+        'Cardio'
     ]
 
+    const dataClean = userPerformance ? userPerformance.data.map( (value, index) => ({
+        A: value.value,
+        subject: ACTIVITY_FRENCH[index]
+    })) : []
+
+    if (loading) {
+        return <div className="mainObjectif-loading"> Loading... </div>
+    }
+
     if (!userPerformance) {
-      <div>Error:{errorData}</div>
+      <div className="mainObjectif-error">Error: {errorData}</div>
     }
 
     return <>
-    <div className="mainObjectif">
-    <ResponsiveContainer width="100%" height="100%">
-    { dataClean &&
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={dataClean}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey={dataClean} />
-          <PolarRadiusAxis />
-          <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-        </RadarChart>
-    }
-    </ResponsiveContainer>
-            <h1>Objectif</h1>
-              { userPerformance && <div> {JSON.stringify(userPerformance)}</div>}
-            { errorData && <div> {JSON.stringify(errorData)}</div>}
-        </div>    
-        </>
+        <div className= {param === "/user/mocked/objectif" || param === "/user/12/objectif" || param === "/user/18/objectif" ? 'active mainObjectif' : "mainObjectif"} >
+            { userPerformance &&
+                <ResponsiveContainer width="100%" height="100%">
+                    <RadarChart cx="50%" cy="50%" outerRadius="70%" data={dataClean} >
+                        <PolarGrid />
+                        <PolarAngleAxis 
+                            dataKey="subject" 
+                            tick={{
+                                fill: 'white',
+                                fontSize: 12
+                            }}
+                        />
+                        <Radar dataKey="A" fill="red" fillOpacity={0.7} />
+                    </RadarChart>
+                </ResponsiveContainer>
+            }
+        </div> 
+    </>
 }
 
 export default Objectif
