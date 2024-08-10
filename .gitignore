@@ -28,5 +28,7 @@ src/**/*.css
 src/**/*.css.map
 
 # package
-package.json
 package-lock.json
+
+# utils
+docs

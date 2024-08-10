@@ -5,10 +5,10 @@ import Logo from "../../../logo/views/logo"
 
 function Proteine () {
 
-    const {loading, userData, errorData} = useContext(DataContext) 
+    const {loadingActivity : loading, userData, errorData} = useContext(DataContext) 
 
     if (loading) {
-        return <div className="protein_loading"> Loading... </div>
+        return <div className="protein skeleton"> Loading... </div>
     }
 
     return <>

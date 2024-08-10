@@ -5,10 +5,10 @@ import Logo from "../../../logo/views/logo"
 
 function Glucide () {
 
-    const {loading, userData, errorData} = useContext(DataContext) 
+    const {loadingAvgSessions : loading, userData, errorData} = useContext(DataContext) 
 
     if (loading) {
-        return <div className="glucide_loading"> Loading... </div>
+        return <div className="glucide skeleton"> Loading... </div>
     }
 
     return <>

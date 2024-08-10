@@ -11,7 +11,11 @@ import { useContext, } from "react"
 import { DataContext } from "../../../hook/context/context"
 
 function Home () {
-    const {errorData, loading, userData} = useContext(DataContext)
+    const {errorData, loadingData: loading, userData} = useContext(DataContext)
+
+    if (!loading && !userData) {
+        return <></>
+    }
 
     if (errorData) {
         return <div>{JSON.stringify(errorData)}</div>
@@ -20,20 +24,12 @@ function Home () {
     return(
         <div className="home">
             <div className="profil">
-                {!loading && userData && (
-                    <>
-                        <h1>Bonjour <span>{userData.userInfos.firstName}</span></h1>
-                        <p>Félicitation ! Vous avez explosé vos objectifs hier </p>
-                    </>
-                )}
-                {loading && (
-                    <>
-                        <h1 style={{
-                            background:"#ccc",
-                        }}>loading ...</h1>
-                        <p>Félicitation ! Vous avez explosé vos objectifs hier </p>
-                    </>
-                )}
+                <h1 className={loading ? "skeleton title" : ""}>
+                    Bonjour <span>{userData && userData.userInfos.firstName}</span>
+                </h1>
+                <p className={loading ? "skeleton title" : ""}>
+                    Félicitation ! Vous avez explosé vos objectifs hier
+                </p>
             </div>
 
             <div className="home_seeGlobal">

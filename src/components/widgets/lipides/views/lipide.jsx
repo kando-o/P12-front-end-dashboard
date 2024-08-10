@@ -5,10 +5,10 @@ import Logo from "../../../logo/views/logo"
 
 function Lipide () {
 
-    const {loading, userData, errorData} = useContext(DataContext) 
+    const {loadingPerformance : loading , userData, errorData} = useContext(DataContext) 
 
     if (loading) {
-        return <div className="lipide_loading"> Loading... </div>
+        return <div className="lipide skeleton"> Loading... </div>
     }
 
     return (

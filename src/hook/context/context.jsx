@@ -131,10 +131,14 @@ const mocked = {
     },
 }
 
+
 export const DataProvider = ({ children }) => {
 
     const [id, setId] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loadingData, setLoadingData] = useState(false)
+    const [loadingActivity, setLoadingActivity] = useState(false)
+    const [loadingPerformance, setLoadingPerformance] = useState(false)
+    const [loadingAvgSessions, setLoadingAvgSessions] = useState(false)
     const [userData, setUserData] = useState(null);
     const [userActivityData, setUserActivityData] = useState(null);
     const [userAverageSessions, setUserAverageSession] = useState(null);
@@ -143,20 +147,33 @@ export const DataProvider = ({ children }) => {
 
     useEffect(() => {
         if (!id) return
-        setLoading(true)
         setErrorData(null)
 
         const loadFetch = async () => {
 
-            setTimeout( async () => {
-                try {
-                    if (id==="mocked") {
+            try {
+                if (id==="mocked") {
+                    setLoadingData(true)
+                    setLoadingActivity(true)
+                    setLoadingAvgSessions(true)
+                    setLoadingPerformance(true)
+                    setTimeout(() => {
                         setUserData(mocked.user)
                         setUserActivityData(mocked.activity)
                         setUserAverageSession(mocked.sessions)
                         setUserPerformance(mocked.performance)
-                    } else {
+                        setLoadingData(false)
+                        setLoadingActivity(false)
+                        setLoadingAvgSessions(false)
+                        setLoadingPerformance(false)
+                    }, 1500)
+                } else {
+                    setLoadingData(true)
+                    setLoadingActivity(true)
+                    setLoadingAvgSessions(true)
+                    setLoadingPerformance(true)
 
+                    setTimeout(async () => {
                         await fetch(`http://localhost:3000/user/${id}`)
                             .then(res=> {
                                 if (!res.ok) {
@@ -169,7 +186,11 @@ export const DataProvider = ({ children }) => {
                                 return res.json()
                             })
                             .then(data => setUserData(data.data))
+                            .catch(err => { setErrorData(err) })
+                        setLoadingData(false)
+                    }, 1500)
 
+                    setTimeout(async () => {
                         await fetch(`http://localhost:3000/user/${id}/activity`)
                             .then(res=> {
                                 if (!res.ok) {
@@ -178,7 +199,11 @@ export const DataProvider = ({ children }) => {
                                 return res.json()
                             })
                             .then(data => setUserActivityData(data.data))
-                        
+                            .catch(err => { setErrorData(err) })
+                        setLoadingActivity(false)
+                    }, 2000)
+
+                    setTimeout(async () => {
                         await fetch(`http://localhost:3000/user/${id}/average-sessions`)
                             .then(res=> {
                                 if (!res.ok) {
@@ -187,7 +212,11 @@ export const DataProvider = ({ children }) => {
                                 return res.json()
                             })
                             .then(data => setUserAverageSession(data.data))
+                            .catch(err => { setErrorData(err) })
+                        setLoadingAvgSessions(false)
+                    }, 3000)
 
+                    setTimeout(async () => {
                         await fetch(`http://localhost:3000/user/${id}/performance`)
                             .then(res=> {
                                 if (!res.ok) {
@@ -197,21 +226,25 @@ export const DataProvider = ({ children }) => {
                                 return res.json()
                             })
                             .then(data => setUserPerformance(data.data))
-                    }
-                    setLoading(false)
-
-                } catch (err) {
-                    console.log("ERROR:", err)
-                    setErrorData(err)
-                    setLoading(false)
+                            .catch(err => { setErrorData(err) })
+                        setLoadingPerformance(false)
+                    }, 4000)
                 }
-            }, 2000)
+
+            } catch (err) {
+                console.log("ERROR:", err)
+                setErrorData(err)
+                setLoadingData(false)
+                setLoadingActivity(false)
+                setLoadingPerformance(false)
+                setLoadingAvgSessions(false)
+            }
 
         }
         loadFetch()
     }, [id])
 
-    return <DataContext.Provider value={{ loading, errorData, userData, userActivityData, userAverageSessions, userPerformance, id, setId }} >
+    return <DataContext.Provider value={{ loadingData, loadingActivity, loadingPerformance, loadingAvgSessions, errorData, userData, userActivityData, userAverageSessions, userPerformance, id, setId }} >
         {children}
     </DataContext.Provider>
 }

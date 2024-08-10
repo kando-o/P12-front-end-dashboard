@@ -10,13 +10,13 @@ function Navigation () {
                     <Logo logoClass="logoNav"/>
                 </li>
                 <li className="navigation_item">
-                    <NavLink to={'/user/mocked'}>Accueil</NavLink>
+                    <NavLink to={'/'}>Accueil</NavLink>
                 </li>
                 <li className="navigation_item">
                     <NavLink to="/">Profil</NavLink>
                 </li>
                 <li className="navigation_item">
-                    <NavLink to="/user/reglage">Réglage</NavLink>
+                    <NavLink to="/reglage">Réglage</NavLink>
                 </li>
                 <li className="navigation_item">
                     <NavLink to="/">Communauté</NavLink>

@@ -1,12 +1,33 @@
 import { useContext } from "react";
 import {DataContext} from "../../../hook/context/context";
-import "../assets/styles/poids.css"
 import { BarChart, Bar, XAxis, CartesianGrid,Tooltip, YAxis, ResponsiveContainer } from 'recharts';
+import PropTypes from "prop-types"
+import "../assets/styles/poids.css"
+
+
+const CustomTooltip = ({ payload, active }) => {
+    if (active) {
+      return (
+        <div className="mainPoids-tooltipContainer">
+          <div className='mainPoids-tooltipItem'>
+            {payload[0].value} kg
+          </div>
+          <div className='mainPoids-tooltipItem'>
+            {payload[1].value} Kcal
+          </div>
+        </div>
+      )
+    }
+}
+
+CustomTooltip.propTypes = {
+    payload : PropTypes.array,
+    active : PropTypes.bool
+}
 
 function Poids () {
 
-    const {userActivityData, loading, errorData} = useContext(DataContext)
-    const param = window.location.pathname
+    const {userActivityData, loadingActivity: loading, errorData} = useContext(DataContext)
 
     const data =  userActivityData ? userActivityData.sessions.map( (item, index) => ({
         name : index + 1,
@@ -14,23 +35,8 @@ function Poids () {
         kCal : item.calories
     })) : []
 
-    const CustomTooltip = ({ payload, active }) => {
-        if (active) {
-          return (
-            <div className="mainPoids-tooltipContainer">
-              <div className='mainPoids-tooltipItem'>
-                {payload[0].value} kg
-              </div>
-              <div className='mainPoids-tooltipItem'>
-                {payload[1].value} Kcal
-              </div>
-            </div>
-          )
-        }
-    }
-
     if (loading) {
-        return <div className="mainPoids-loading"> Loading... </div>
+        return <div className="mainPoids skeleton mainPoids-loading"> Loading... </div>
     }
 
     if (!userActivityData) {
@@ -38,7 +44,7 @@ function Poids () {
     }
 
     return(<>
-        <div className= {param === "/user/mocked/poids" || param === "/user/12/poids" || param === "/user/18/poids" ? 'active mainPoids' : "mainPoids"}>
+        <div className= "mainPoids">
             <div className="mainPoids-text">
                 <h2>Activité quotidienne</h2>
                 <ul>

@@ -5,10 +5,10 @@ import Logo from "../../../logo/views/logo"
 
 function Calorie () {
 
-    const { loading, userData, errorData} = useContext(DataContext)
+    const { loadingData : loading, userData, errorData} = useContext(DataContext)
 
     if (loading) {
-        return <div className="calorie_loading"> Loading... </div>
+        return <div className="calorie skeleton"> Loading... </div>
     }
 
     return <>
