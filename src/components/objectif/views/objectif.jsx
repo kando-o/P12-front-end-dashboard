@@ -20,7 +20,7 @@ function Objectif () {
         return <div className="mainObjectif skeleton mainObjectif-loading"> Loading... </div>
     }
 
-    if (!userPerformance) {
+    if (userPerformance === null) {
       <div className="mainObjectif-error">Error: {errorData}</div>
     }
 

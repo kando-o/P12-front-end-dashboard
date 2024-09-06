@@ -11,6 +11,10 @@ function Proteine () {
         return <div className="protein skeleton"> Loading... </div>
     }
 
+	if (userData === null)  {
+		<div className="calorie_error"> Error: {errorData} </div>
+	}
+
     return <>
         <div className="protein">
 
@@ -22,9 +26,6 @@ function Proteine () {
                         <div className="protein_data">{JSON.stringify(userData.keyData.proteinCount)}g</div>
                         <h2>Proteine</h2>
                     </>
-                )}
-                {errorData && (
-                    <div className="protein_error">{errorData}</div>
                 )}
             </div>
         </div>

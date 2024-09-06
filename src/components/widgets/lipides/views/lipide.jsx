@@ -10,6 +10,10 @@ function Lipide () {
     if (loading) {
         return <div className="lipide skeleton"> Loading... </div>
     }
+	
+	if (userData === null)  {
+		<div className="calorie_error"> Error: {errorData} </div>
+	}
 
     return (
         <div className="lipide">
@@ -20,9 +24,6 @@ function Lipide () {
                         <div>{JSON.stringify(userData.keyData.lipidCount)}g</div>
                         <h2>Lipide</h2>
                     </>
-                )}
-                {errorData && (
-                    <div>{userData && JSON.stringify(errorData)}</div>
                 )}
             </div>
         </div>

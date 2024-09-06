@@ -8,7 +8,7 @@ function Score () {
 
     if (loading) return <div className="mainScore skeleton calorie_loading"> Loading... </div>
 
-    if (!userData) return <div className="mainScore_error">Error: {JSON.stringify(errorData)}</div>
+    if (userData === null) return <div className="mainScore_error">Error: {errorData}</div>
 
 
     const dataClean = userData && [

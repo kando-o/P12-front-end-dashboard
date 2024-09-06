@@ -11,6 +11,10 @@ function Calorie () {
         return <div className="calorie skeleton"> Loading... </div>
     }
 
+	if (userData === null)  {
+		<div className="calorie_error"> Error: {errorData} </div>
+	}
+
     return <>
         <div className="calorie">
             <Logo type="calorie" width={60} height={60} logoClass="calorie_svg" />
@@ -21,9 +25,7 @@ function Calorie () {
                         <h2>Calorie</h2>
                     </>
                 )}
-                {errorData && (
-                    <div className="calorie_error"> Error: {errorData} </div>
-                )}
+                
             </div>
         </div>
     </>

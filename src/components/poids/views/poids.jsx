@@ -27,7 +27,7 @@ CustomTooltip.propTypes = {
 
 function Poids () {
 
-    const {userActivityData, loadingActivity: loading, errorData} = useContext(DataContext)
+    const {userActivityData, loadingActivity: loading, errorData} = useContext(DataContext)	
 
     const data =  userActivityData ? userActivityData.sessions.map( (item, index) => ({
         name : index + 1,
@@ -39,8 +39,8 @@ function Poids () {
         return <div className="mainPoids skeleton mainPoids-loading"> Loading... </div>
     }
 
-    if (!userActivityData) {
-        return <div className="mainPoids-error">Error: {errorData}</div>
+    if (userActivityData === null) {
+        return <div className="mainPoids-error">Error: test {errorData}</div>
     }
 
     return(<>

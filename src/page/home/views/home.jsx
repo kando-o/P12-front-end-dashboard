@@ -18,7 +18,7 @@ function Home () {
     }
 
     if (errorData) {
-        return <div>{JSON.stringify(errorData)}</div>
+        return <div>{errorData}</div>
     }
 
     return(

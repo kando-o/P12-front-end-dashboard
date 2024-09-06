@@ -10,6 +10,10 @@ function Glucide () {
     if (loading) {
         return <div className="glucide skeleton"> Loading... </div>
     }
+	
+	if (userData === null)  {
+		<div className="calorie_error"> Error: {errorData} </div>
+	}
 
     return <>
         <div className="glucide">
@@ -20,9 +24,6 @@ function Glucide () {
                         <div>{JSON.stringify(userData.keyData.carbohydrateCount)}g</div>
                         <h2>Glucide</h2>
                     </>
-                )}
-                {errorData && (
-                    <div className="glucide_error"> Error: {errorData}</div>
                 )}
             </div>
         </div>

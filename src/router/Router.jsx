@@ -20,8 +20,6 @@ const Dispatcher = ()=> {
     const location = useLocation()
     const {id} = useContext(DataContext)
 
-    console.log(id, DataContext)
-
     useEffect(() => {
         if (location.pathname === "/") {
             if (id) {
@@ -43,10 +41,9 @@ const NotFound = () => {
     const navigate = useNavigate()
     useEffect(() => {
         setTimeout(() => {
-            navigate ("/user/no_user")
-        }, 2500)
+            navigate ("/user/mocked")
+        }, 2000)
     }, [navigate])
-    return <div>This page does not exist ... in this universe or another</div>
 }
 
 const SingleComponentLayout = () => {
