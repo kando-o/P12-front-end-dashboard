@@ -11,42 +11,98 @@ import { useContext, } from "react"
 import { DataContext } from "../../../hook/context/context"
 
 function Home () {
-    const {errorData, loadingData: loading, userData} = useContext(DataContext)
+	const {errors, loadingData: loading, userData} = useContext(DataContext)
 
-    if (!loading && !userData) {
-        return <></>
-    }
+	// Fonction pour afficher toutes les erreurs importantes
+	const renderErrors = () => {
+		if (!errors || errors.length === 0) return null;
+		
+		// Filtrer les erreurs de connexion (les plus importantes)
+		const connectionErrors = errors.filter(error => 
+			error.message.includes("Erreur de connexion")
+		);
+		
+		if (connectionErrors.length > 0) {
+			return (
+				<div style={{
+					background: '#ffebee',
+					border: '1px solid #f44336',
+					borderRadius: '8px',
+					padding: '16px',
+					margin: '16px',
+					color: '#c62828'
+				}}>
+					<h3>Erreurs de connexion détectées :</h3>
+					<ul>
+						{connectionErrors.map((error, index) => (
+							<li key={index}>
+								<strong>{error.type}:</strong> {error.message}
+							</li>
+						))}
+					</ul>
+					<p><strong>Solution :</strong> Vérifiez votre connexion réseau et assurez-vous que le serveur API est démarré sur le port 3000.</p>
+				</div>
+			);
+		}
+		
+		// Afficher les autres erreurs
+		return (
+			<div style={{
+				background: '#fff3e0',
+				border: '1px solid #ff9800',
+				borderRadius: '8px',
+				padding: '16px',
+				margin: '16px',
+				color: '#e65100'
+			}}>
+				<h3>Erreurs détectées :</h3>
+				<ul>
+					{errors.map((error, index) => (
+						<li key={index}>
+							<strong>{error.type}:</strong> {error.message}
+						</li>
+					))}
+				</ul>
+			</div>
+		);
+	};
 
-    if (errorData) {
-        return <div>{errorData}</div>
-    }
+	// Si il y a des erreurs, afficher seulement les erreurs
+	if (errors && errors.length > 0) {
+		return (
+			<div className="home">
+				{renderErrors()}
+			</div>
+		);
+	}
 
-    return(
-        <div className="home">
-            <div className="profil">
-                <h1 className={loading ? "skeleton title" : ""}>
-                    Bonjour <span>{userData && userData.userInfos.firstName}</span>
-                </h1>
-                <p className={loading ? "skeleton title" : ""}>
-                    Félicitation ! Vous avez explosé vos objectifs hier
-                </p>
-            </div>
+	// Sinon afficher la page normale
+	return(
+		<div className="home">
+			<div className="profil">
+				<h1 className={loading ? "skeleton title" : ""}>
+					Bonjour <span>{userData && userData.userInfos.firstName}</span>
+				</h1>
+				<p className={loading ? "skeleton title" : ""}>
+					Félicitation <span>{userData && userData.userInfos.firstName}</span>! Vous avez explosé vos objectifs hier
+				</p>
+			</div>
 
-            <div className="home_seeGlobal">
-                <Poids />
-                <Radar />
-                <Objectif />
-                <Score />
-            </div>
+			<div className="home_seeGlobal">
+					<Poids />
+					<Radar />
+					<Objectif />
+					<Score />
+			</div>
 
-            <div className="home_widget">
-                <Calorie />
-                <Proteine/>
-                <Glucide/>
-                <Lipide/>
-            </div>
-        </div>
-    )
+			<div className="home_widget">
+					<Calorie />
+					<Proteine/>
+					<Glucide/>
+					<Lipide/>
+			</div>
+		</div>
+	)
 }
 
 export default Home

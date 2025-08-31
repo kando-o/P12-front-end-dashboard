@@ -12,7 +12,12 @@ function Lipide () {
     }
 	
 	if (userData === null)  {
-		<div className="calorie_error"> Error: {errorData} </div>
+		return <div className="calorie_error">
+			{errorData && errorData.includes("Failed to fetch") 
+				? "Erreur de connexion : Impossible de récupérer les données utilisateur. Veuillez vérifier votre connexion réseau."
+				: `Erreur : ${errorData}`
+			}
+		</div>
 	}
 
     return (
