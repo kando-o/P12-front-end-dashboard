@@ -1,9 +1,36 @@
+import { useContext } from "react"
 import "../assets/styles/glucide.css"
+import { DataContext } from "../../../../hook/context/context"
+import Logo from "../../../logo/views/logo"
 
 function Glucide () {
+
+    const {loadingAvgSessions : loading, userData, errorData} = useContext(DataContext) 
+
+    if (loading) {
+        return <div className="glucide skeleton"> Loading... </div>
+    }
+	
+	if (userData === null)  {
+		return <div className="calorie_error">
+			{errorData && errorData.includes("Failed to fetch") 
+				? "Erreur de connexion : Impossible de récupérer les données utilisateur. Veuillez vérifier votre connexion réseau."
+				: `Erreur : ${errorData}`
+			}
+		</div>
+	}
+
     return <>
         <div className="glucide">
-            <h1>Component Glucide</h1>
+            <Logo type="glucide" width={60} height={60} logoClass="lipide_svg"/>
+            <div className="glucide_info">
+                {userData && (
+                    <>
+                        <div>{JSON.stringify(userData.keyData.carbohydrateCount)}g</div>
+                        <h2>Glucide</h2>
+                    </>
+                )}
+            </div>
         </div>
     </>
 }

@@ -1,3 +1,81 @@
 .home {
-    border: solid yellow 1px;
+    display: flex;
+    max-width: 1440px;
+    flex-wrap: wrap;
+    gap: 50px;
+
+    .profil {
+        font-size: 48px;
+        font-weight: 500;
+        width: 100dvh;
+
+        h1 {
+            margin: 0px 0px 2rem 0px;
+        }
+
+        span {
+            color: red;
+        }
+
+        .skeleton span {
+            color: transparent;
+        }
+
+        p {
+            font-size: 28px;
+            font-weight:300;
+        }
+    }
+
+    .mainPoids {
+        grid-area: mainPoids;
+    }
+    .mainRadar {
+        grid-area: mainRadar;
+    }
+    .mainObjectif {
+        grid-area: mainObjectif;
+    }
+    .mainScore {
+        grid-area: mainScore;
+    }
+
+    &_seeGlobal {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 835px ;
+        justify-content: space-between;
+        gap: 28px;
+        grid-template-areas: 
+        " mainPoids mainPoids mainPoids"
+        "mainRadar mainObjectif mainScore";
+    }
+
+    &_widget {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 39px;
+        color: black;
+        font-size: 24px;
+        font-weight: 600;
+        width: 258px;
+
+        h2 {
+            font-size: 16px;
+            color: gray;
+            font-weight: 400;
+            padding-top: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .home {
+        gap: 25px;
+
+        &_seeGlobal {
+            max-width: 700px;
+        }
+    }
 }

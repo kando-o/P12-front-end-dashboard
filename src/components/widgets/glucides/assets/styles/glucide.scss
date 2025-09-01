@@ -1,5 +1,11 @@
 .glucide {
-    width: 258px;
+    display: flex;
+    padding: 2rem;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
     height: 124px ;
-    box-shadow: 0px 0px 5px pink;
+    box-shadow: 0px 0px 5px rgb(229, 207, 11);
+    background: rgba(251, 251, 251, 1);
+    border-radius: 5px;
 }

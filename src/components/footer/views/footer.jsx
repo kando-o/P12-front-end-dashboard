@@ -1,6 +1,8 @@
+import "../assets/styles/footer.css"
+
 function Footer () {
     return <>
-        <h2>Copyright 2024</h2>
+        <div className="footer_text">Copyright SportSee 2024</div>
     </>
 }
 

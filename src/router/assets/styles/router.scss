@@ -1,0 +1,28 @@
+.layout-component {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-wrapper {
+        width: 50%;
+    }
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.skeleton {
+    background: linear-gradient(-45deg, #cac3, #8cf3, #5cf3);
+    background-size: 400%, 400%;
+    animation: gradient 10s ease infinite;
+    color: transparent;
+
+    &.title {
+        border-radius: 5px;
+    }
+    box-shadow: 5px 5px 8px #cdf2;
+}

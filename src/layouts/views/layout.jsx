@@ -1,34 +1,40 @@
 import Footer from "../../components/footer/views/footer"
-
 import Navigation from "../../components/navigation/views/navigation"
 import NavOverlay from "../../components/navigation/navOverlay/views/navOverlay"
+import { Outlet } from "react-router-dom"
+
 import PropTypes from "prop-types"
 import "../assets/styles/layout.css"
 
-const Layout = ({children}) => {
-    return (
-        <div className="layout">
-            <nav className="layout_navigation">
-                <>
-                <Navigation />
-                <NavOverlay />
-                </>
-            </nav>
-            <main className="layout_main">
-                {children}
-            </main>
+const Layout = () => {
+    
+	return (
 
-            <footer className="layout_footer">
-                <div className="copyright">
-                    <Footer />
-                </div>
-            </footer>
-        </div>
-    )
+		<div className="layout">
+			<div className="layout_navigation">
+					<Navigation />
+			</div>
+
+			<div className="layout_bottom">
+				<div className="layout_left">
+						<div></div>
+						<div className="layout_navigationOvelay"><NavOverlay/></div>
+						<footer className="layout_footer">
+								<div className="copyright">
+										<Footer />
+								</div>
+						</footer>
+				</div>
+				<main className="layout_main">
+						<Outlet/>
+				</main>
+			</div>
+		</div>
+	)
 }
 
 Layout.propTypes = {
-    children: PropTypes.object.isRequired
+  children: PropTypes.node.isRequired
 }
 
 export default Layout
